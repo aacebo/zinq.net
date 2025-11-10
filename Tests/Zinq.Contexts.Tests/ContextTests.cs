@@ -1,7 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
 
-using Zinq.Contexts.Extensions;
-
 namespace Zinq.Contexts.Tests;
 
 public class ContextTests

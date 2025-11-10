@@ -1,3 +1,5 @@
+using Microsoft.Extensions.DependencyInjection;
+
 namespace Zinq.Contexts;
 
 public partial class Context : IContext
@@ -12,6 +14,11 @@ public partial class Context : IContext
     {
         TraceId = Guid.NewGuid().ToString();
         Provider = provider;
+
+        foreach (var extension in provider.GetServices<IContextExtension>())
+        {
+            Extend(extension);
+        }
     }
 
     public bool Has(string key)
@@ -44,6 +51,12 @@ public partial class Context : IContext
     public IContext Set(string key, IResolver resolver)
     {
         Values.Add(key, resolver);
+        return this;
+    }
+
+    public IContext Extend(IContextExtension extension)
+    {
+        extension.Apply(this);
         return this;
     }
 

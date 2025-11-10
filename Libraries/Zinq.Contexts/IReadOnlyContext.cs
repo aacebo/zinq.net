@@ -7,7 +7,6 @@ public interface IReadOnlyContext : IDisposable, ICloneable
     IServiceProvider Provider { get; }
 
     bool Has(string key);
-
     object? Get(string key);
     bool TryGet(string key, out object value);
 

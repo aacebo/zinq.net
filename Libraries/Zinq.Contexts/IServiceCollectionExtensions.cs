@@ -1,6 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Zinq.Contexts.Extensions;
+namespace Zinq.Contexts;
 
 public static class IServiceCollectionExtensions
 {

@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0AB3BF05
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zinq.Contexts.Tests", "Tests\Zinq.Contexts.Tests\Zinq.Contexts.Tests.csproj", "{5F0B565D-EA12-4969-85F3-82C1235CB96D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zinq.Contexts.AspNetCore", "Libraries\Zinq.Contexts.AspNetCore\Zinq.Contexts.AspNetCore.csproj", "{A5D3866C-0732-463B-B994-C4DD5F02DDDF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,18 @@ Global
 		{5F0B565D-EA12-4969-85F3-82C1235CB96D}.Release|x64.Build.0 = Release|Any CPU
 		{5F0B565D-EA12-4969-85F3-82C1235CB96D}.Release|x86.ActiveCfg = Release|Any CPU
 		{5F0B565D-EA12-4969-85F3-82C1235CB96D}.Release|x86.Build.0 = Release|Any CPU
+		{A5D3866C-0732-463B-B994-C4DD5F02DDDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5D3866C-0732-463B-B994-C4DD5F02DDDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5D3866C-0732-463B-B994-C4DD5F02DDDF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A5D3866C-0732-463B-B994-C4DD5F02DDDF}.Debug|x64.Build.0 = Debug|Any CPU
+		{A5D3866C-0732-463B-B994-C4DD5F02DDDF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A5D3866C-0732-463B-B994-C4DD5F02DDDF}.Debug|x86.Build.0 = Debug|Any CPU
+		{A5D3866C-0732-463B-B994-C4DD5F02DDDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5D3866C-0732-463B-B994-C4DD5F02DDDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5D3866C-0732-463B-B994-C4DD5F02DDDF}.Release|x64.ActiveCfg = Release|Any CPU
+		{A5D3866C-0732-463B-B994-C4DD5F02DDDF}.Release|x64.Build.0 = Release|Any CPU
+		{A5D3866C-0732-463B-B994-C4DD5F02DDDF}.Release|x86.ActiveCfg = Release|Any CPU
+		{A5D3866C-0732-463B-B994-C4DD5F02DDDF}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,5 +66,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{BE6EC52B-BD73-4FB1-89DC-275A0EAB99F4} = {F2E35B3E-9711-EDEC-6202-DB40BDEED14A}
 		{5F0B565D-EA12-4969-85F3-82C1235CB96D} = {0AB3BF05-4346-4AA6-1389-037BE0695223}
+		{A5D3866C-0732-463B-B994-C4DD5F02DDDF} = {F2E35B3E-9711-EDEC-6202-DB40BDEED14A}
 	EndGlobalSection
 EndGlobal

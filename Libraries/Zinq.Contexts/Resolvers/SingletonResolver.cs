@@ -27,3 +27,9 @@ public class SingletonResolver : IResolver, IAsyncResolver
         return Task.FromResult(Value);
     }
 }
+
+public static partial class ResolverExtensions
+{
+    public static IResolver ToSingleton(this IResolver resolver) => new SingletonResolver(resolver);
+    public static IAsyncResolver ToSingleton(this IAsyncResolver resolver) => new SingletonResolver(resolver);
+}
