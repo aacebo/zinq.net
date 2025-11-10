@@ -7,7 +7,7 @@ namespace Zinq.Contexts.Tests;
 public class ContextTests
 {
     [Fact]
-    public void Should_Fork()
+    public void Should_Copy()
     {
         var key = new Key<Guid>("user_id");
         var provider = new ServiceCollection().AddContext().BuildServiceProvider();
@@ -16,7 +16,7 @@ public class ContextTests
         Assert.False(context.Has(key));
 
         var id = Guid.NewGuid();
-        var newContext = context.Fork(key, id);
+        var newContext = context.With(key, id);
 
         Assert.False(context.Has(key));
         Assert.True(newContext.Has(key));
@@ -33,7 +33,7 @@ public class ContextTests
         Assert.False(context.Has(key));
 
         var id = Guid.NewGuid();
-        var newContext = context.Fork(key, _ => id);
+        var newContext = context.With(key, _ => id);
 
         Assert.False(context.Has(key));
         Assert.True(newContext.Has(key));

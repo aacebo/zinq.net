@@ -47,7 +47,7 @@ public partial class Context : IContext
         return this;
     }
 
-    public IReadOnlyContext Fork(string key, IResolver resolver)
+    public IReadOnlyContext With(string key, IResolver resolver)
     {
         return New(this).Set(key, resolver).Build();
     }
