@@ -2,8 +2,6 @@ namespace Zinq.Contexts;
 
 public partial class Context : ICloneable
 {
-    public object Clone()
-    {
-        return MemberwiseClone();
-    }
+    object ICloneable.Clone() => MemberwiseClone();
+    public Context Clone() => (Context)MemberwiseClone();
 }

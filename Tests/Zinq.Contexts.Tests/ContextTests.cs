@@ -1,5 +1,3 @@
-using Microsoft.Extensions.DependencyInjection;
-
 namespace Zinq.Contexts.Tests;
 
 public class ContextTests
@@ -8,8 +6,7 @@ public class ContextTests
     public void Should_Copy()
     {
         var key = new Key<Guid>("user_id");
-        var provider = new ServiceCollection().AddContext().BuildServiceProvider();
-        var context = provider.GetRequiredService<IReadOnlyContext>();
+        var context = new Context().ToReadOnly();
 
         Assert.False(context.Has(key));
 
@@ -25,8 +22,7 @@ public class ContextTests
     public void Should_Resolve_Factory()
     {
         var key = new Key<Guid>("user_id");
-        var provider = new ServiceCollection().AddContext().BuildServiceProvider();
-        var context = provider.GetRequiredService<IReadOnlyContext>();
+        var context = new Context().ToReadOnly();
 
         Assert.False(context.Has(key));
 

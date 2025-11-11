@@ -3,7 +3,6 @@ namespace Zinq.Contexts;
 public interface IReadOnlyContext : IDisposable, ICloneable
 {
     IReadOnlyContext? Parent { get; }
-    IServiceProvider Provider { get; }
 
     bool Has(string key);
     object? Get(string key);

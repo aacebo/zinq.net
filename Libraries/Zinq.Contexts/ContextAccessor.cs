@@ -1,5 +1,3 @@
-using Microsoft.Extensions.DependencyInjection;
-
 namespace Zinq.Contexts;
 
 public class ContextAccessor(IServiceProvider provider) : IMutableContextAccessor
@@ -10,7 +8,7 @@ public class ContextAccessor(IServiceProvider provider) : IMutableContextAccesso
     {
         get
         {
-            Async.Value ??= provider.GetRequiredService<IContext>();
+            Async.Value ??= (IContext?)provider.GetService(typeof(IContext)) ?? throw new Exception("IContext not found");
             return Async.Value;
         }
         private set
@@ -21,7 +19,7 @@ public class ContextAccessor(IServiceProvider provider) : IMutableContextAccesso
 
     public IContextSnapshot Snapshot()
     {
-        return new ContextSnapshot(Async.Value ?? provider.GetRequiredService<IContext>());
+        return new ContextSnapshot(Async.Value ?? (IContext?)provider.GetService(typeof(IContext)) ?? throw new Exception("IContext not found"));
     }
 
     public void Next(IReadOnlyContext context)

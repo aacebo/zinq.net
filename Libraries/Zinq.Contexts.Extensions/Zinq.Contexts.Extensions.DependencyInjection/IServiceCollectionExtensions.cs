@@ -1,13 +1,13 @@
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Zinq.Contexts;
+namespace Zinq.Contexts.Extensions.DependencyInjection;
 
 public static class IServiceCollectionExtensions
 {
     public static IServiceCollection AddContext(this IServiceCollection services)
     {
         return services
-            .AddScoped<IContext, Context>()
+            .AddScoped(provider => Context.New().WithProvider(provider).Build())
             .AddScoped<IReadOnlyContext>(provider => provider.GetRequiredService<IContext>());
     }
 
@@ -19,13 +19,13 @@ public static class IServiceCollectionExtensions
             .AddScoped<IReadOnlyContext>(provider => provider.GetRequiredService<IContext>());
     }
 
-    public static IServiceCollection AddContext(this IServiceCollection services, Func<IContextBuilder, IContextBuilder> action)
+    public static IServiceCollection AddContext(this IServiceCollection services, Func<IServiceProvider, IContextBuilder, IContextBuilder> action)
     {
         return services
             .AddScoped<IContext, Context>(provider =>
             {
-                var builder = new ContextBuilder(provider);
-                return (Context)action(builder).Build();
+                var builder = new ContextBuilder().WithProvider(provider);
+                return (Context)action(provider, builder).Build();
             })
             .AddScoped<IReadOnlyContext>(provider => provider.GetRequiredService<IContext>());
     }

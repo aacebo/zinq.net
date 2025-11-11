@@ -1,27 +1,14 @@
-using Microsoft.Extensions.DependencyInjection;
-
 namespace Zinq.Contexts;
 
 public class ContextBuilder : IContextBuilder
 {
     private IReadOnlyContext? _parent;
-    private readonly IServiceProvider _provider;
-    private readonly IServiceCollection _extensions = new ServiceCollection();
+    private readonly IList<IContextExtension> _extensions = [];
     private readonly Dictionary<string, IResolver> _values = [];
 
     public ContextBuilder()
     {
-        _provider = new ServiceCollection().BuildServiceProvider();
-    }
 
-    public ContextBuilder(IServiceProvider provider)
-    {
-        _provider = provider;
-    }
-
-    public ContextBuilder(IReadOnlyContext parent) : this(parent.Provider)
-    {
-        _parent = parent;
     }
 
     public IContextBuilder WithParent(IReadOnlyContext parent)
@@ -30,9 +17,9 @@ public class ContextBuilder : IContextBuilder
         return this;
     }
 
-    public IContextBuilder WithExtension<TContextExtension>() where TContextExtension : class, IContextExtension
+    public IContextBuilder WithExtension(IContextExtension extension)
     {
-        _extensions.AddSingleton<IContextExtension, TContextExtension>();
+        _extensions.Add(extension);
         return this;
     }
 
@@ -44,7 +31,7 @@ public class ContextBuilder : IContextBuilder
 
     public IContext Build()
     {
-        var context = new Context(_provider)
+        var context = new Context()
         {
             Values = _values
         };
@@ -54,7 +41,7 @@ public class ContextBuilder : IContextBuilder
             context.Parent = _parent;
         }
 
-        foreach (var extension in _extensions.BuildServiceProvider().GetServices<IContextExtension>())
+        foreach (var extension in _extensions)
         {
             context.Extend(extension);
         }

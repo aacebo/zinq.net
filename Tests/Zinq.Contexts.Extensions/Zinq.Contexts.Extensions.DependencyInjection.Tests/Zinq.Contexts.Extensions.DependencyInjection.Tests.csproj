@@ -1,6 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.10" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="coverlet.collector" Version="6.0.2" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
     <PackageReference Include="xunit" Version="2.9.2" />
@@ -12,7 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Libraries\Zinq.Contexts\Zinq.Contexts.csproj" />
+    <ProjectReference Include="..\..\..\Libraries\Zinq.Contexts\Zinq.Contexts.csproj" />
+    <ProjectReference Include="..\..\..\Libraries\Zinq.Contexts.Extensions\Zinq.Contexts.Extensions.DependencyInjection\Zinq.Contexts.Extensions.DependencyInjection.csproj" />
   </ItemGroup>
 
 </Project>

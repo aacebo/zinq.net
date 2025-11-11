@@ -1,22 +1,14 @@
-using Microsoft.Extensions.DependencyInjection;
-
 namespace Zinq.Contexts;
 
 public partial class Context : IContext
 {
     public IReadOnlyContext? Parent { get; internal set; }
-    public IServiceProvider Provider { get; internal set; }
 
     internal IDictionary<string, IResolver> Values { get; init; } = new Dictionary<string, IResolver>();
 
-    public Context(IServiceProvider provider)
+    public Context()
     {
-        Provider = provider;
 
-        foreach (var extension in provider.GetServices<IContextExtension>())
-        {
-            Extend(extension);
-        }
     }
 
     public bool Has(string key)
@@ -87,11 +79,9 @@ public partial class Context : IContext
         return this;
     }
 
-    public IContext Scope() => New(this).Build();
-    public IReadOnlyContext With(string key, IResolver resolver) => Parent is null ? New(Provider).With(key, resolver).Build() : New(Parent).With(key, resolver).Build();
+    public IContext Scope() => New().WithParent(this).Build();
+    public IReadOnlyContext With(string key, IResolver resolver) => Parent is null ? New().With(key, resolver).Build() : New().WithParent(Parent).With(key, resolver).Build();
     public IReadOnlyContext ToReadOnly() => this;
 
     public static IContextBuilder New() => new ContextBuilder();
-    public static IContextBuilder New(IServiceProvider provider) => new ContextBuilder(provider);
-    public static IContextBuilder New(IReadOnlyContext parent) => new ContextBuilder(parent);
 }
