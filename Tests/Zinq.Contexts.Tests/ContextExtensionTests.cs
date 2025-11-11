@@ -12,8 +12,7 @@ public class ContextExtensionTests
     {
         var provider = new ServiceCollection()
             .AddLogging(builder => builder.AddConsole())
-            .AddContext()
-            .AddLoggerContext()
+            .AddContext(builder => builder.WithLogger())
             .BuildServiceProvider();
 
         var context = provider.GetRequiredService<IReadOnlyContext>();

@@ -6,20 +6,18 @@ public class ContextBuilder : IContextBuilder
 {
     private string? _traceId;
     private IReadOnlyContext? _parent;
-    private readonly IServiceCollection _services = new ServiceCollection();
+    private readonly IServiceProvider _provider;
+    private readonly IServiceCollection _extensions = new ServiceCollection();
     private readonly Dictionary<string, IResolver> _values = [];
 
     public ContextBuilder()
     {
-
+        _provider = new ServiceCollection().BuildServiceProvider();
     }
 
     public ContextBuilder(IServiceProvider provider)
     {
-        foreach (var service in provider.GetServices<IContextExtension>())
-        {
-            _services.AddSingleton(service);
-        }
+        _provider = provider;
     }
 
     public ContextBuilder(IReadOnlyContext parent) : this(parent.Provider)
@@ -43,7 +41,7 @@ public class ContextBuilder : IContextBuilder
 
     public IContextBuilder WithExtension<TContextExtension>() where TContextExtension : class, IContextExtension
     {
-        _services.AddScoped<IContextExtension, TContextExtension>();
+        _extensions.AddSingleton<IContextExtension, TContextExtension>();
         return this;
     }
 
@@ -55,8 +53,7 @@ public class ContextBuilder : IContextBuilder
 
     public IContext Build()
     {
-        var provider = _services.BuildServiceProvider();
-        var context = new Context(provider)
+        var context = new Context(_provider)
         {
             Values = _values
         };
@@ -69,6 +66,11 @@ public class ContextBuilder : IContextBuilder
         if (_parent is not null)
         {
             context.Parent = _parent;
+        }
+
+        foreach (var extension in _extensions.BuildServiceProvider().GetServices<IContextExtension>())
+        {
+            context.Extend(extension);
         }
 
         return context;
