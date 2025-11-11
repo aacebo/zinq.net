@@ -2,7 +2,7 @@ using Zinq.Contexts.Resolvers;
 
 namespace Zinq.Contexts;
 
-public static partial class IReadOnlyContextExtensions
+public static partial class ReadOnlyContextExtensions
 {
     public static TContext With<TContext>(this TContext context, string key, object value) where TContext : IReadOnlyContext
     {

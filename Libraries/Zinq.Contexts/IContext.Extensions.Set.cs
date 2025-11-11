@@ -2,7 +2,7 @@ using Zinq.Contexts.Resolvers;
 
 namespace Zinq.Contexts;
 
-public static partial class IContextExtensions
+public static partial class ContextExtensions
 {
     public static TContext Set<TContext>(this TContext context, string key, object value) where TContext : IContext
     {

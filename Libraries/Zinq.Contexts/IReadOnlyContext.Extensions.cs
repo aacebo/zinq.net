@@ -1,6 +1,6 @@
 namespace Zinq.Contexts;
 
-public static partial class IReadOnlyContextExtensions
+public static partial class ReadOnlyContextExtensions
 {
     public static bool Has<T>(this IReadOnlyContext context, Key<T> key) where T : notnull
     {

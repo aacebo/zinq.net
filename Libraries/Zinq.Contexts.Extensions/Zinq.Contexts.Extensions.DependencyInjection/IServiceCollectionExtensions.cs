@@ -30,13 +30,6 @@ public static class IServiceCollectionExtensions
             .AddScoped<IReadOnlyContext>(provider => provider.GetRequiredService<IContext>());
     }
 
-    public static IServiceCollection AddContextAccessor(this IServiceCollection services)
-    {
-        return services
-            .AddSingleton<IMutableContextAccessor, ContextAccessor>()
-            .AddSingleton<IContextAccessor>(provider => provider.GetRequiredService<IMutableContextAccessor>());
-    }
-
     public static IServiceCollection AddContextAccessor<TContextAccessor>(this IServiceCollection services)
         where TContextAccessor : class, IContextAccessor
     {

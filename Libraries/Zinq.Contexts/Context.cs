@@ -73,12 +73,6 @@ public partial class Context : IContext
         return this;
     }
 
-    public IContext Extend(IContextExtension extension)
-    {
-        extension.Apply(this);
-        return this;
-    }
-
     public IContext Scope() => New().WithParent(this).Build();
     public IReadOnlyContext With(string key, IResolver resolver) => Parent is null ? New().With(key, resolver).Build() : New().WithParent(Parent).With(key, resolver).Build();
     public IReadOnlyContext ToReadOnly() => this;

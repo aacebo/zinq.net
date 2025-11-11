@@ -3,10 +3,9 @@ using Zinq.Contexts.Resolvers;
 namespace Zinq.Contexts;
 
 public interface IContextBuilder : IContextBuilder<IContext>;
-public interface IContextBuilder<TContext> where TContext : IContext
+public interface IContextBuilder<out TContext> where TContext : IContext
 {
     IContextBuilder WithParent(IReadOnlyContext parent);
-    IContextBuilder WithExtension(IContextExtension extension);
     IContextBuilder With(string key, IResolver resolver);
     TContext Build();
 }
