@@ -5,7 +5,7 @@ using Zinq.Contexts.Extensions.Logging;
 
 namespace Zinq.Contexts.Tests;
 
-public class ContextExtensionTests
+public class LoggerExtensionTests
 {
     [Fact]
     public void Should_HaveLogger()
