@@ -4,23 +4,29 @@ namespace Zinq.Contexts;
 
 public static partial class IContextExtensions
 {
-    public static IContext Set(this IContext context, string key, object value)
+    public static TContext Set<TContext>(this TContext context, string key, object value) where TContext : IContext
     {
-        return context.Set(key, new ValueResolver(value));
+        return (TContext)context.Set(key, new ValueResolver(value));
     }
 
-    public static IContext Set<T>(this IContext context, Key<T> key, T value) where T : notnull
+    public static TContext Set<TContext, T>(this TContext context, Key<T> key, T value)
+        where TContext : IContext
+        where T : notnull
     {
-        return context.Set(key.Name, new ValueResolver<T>(value));
+        return (TContext)context.Set(key.Name, new ValueResolver<T>(value));
     }
 
-    public static IContext Set<T>(this IContext context, Key<T> key, Func<IReadOnlyContext, T> resolve) where T : notnull
+    public static TContext Set<TContext, T>(this TContext context, Key<T> key, Func<IReadOnlyContext, T> resolve)
+        where TContext : IContext
+        where T : notnull
     {
-        return context.Set(key.Name, new FactoryResolver<T>(resolve));
+        return (TContext)context.Set(key.Name, new FactoryResolver<T>(resolve));
     }
 
-    public static IContext Set<T>(this IContext context, Key<T> key, Func<IReadOnlyContext, Task<T>> resolve) where T : notnull
+    public static TContext Set<TContext, T>(this TContext context, Key<T> key, Func<IReadOnlyContext, Task<T>> resolve)
+        where TContext : IContext
+        where T : notnull
     {
-        return context.Set(key.Name, new FactoryResolver<T>(resolve));
+        return (TContext)context.Set(key.Name, new FactoryResolver<T>(resolve));
     }
 }

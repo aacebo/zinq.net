@@ -4,23 +4,29 @@ namespace Zinq.Contexts;
 
 public static partial class IReadOnlyContextExtensions
 {
-    public static IReadOnlyContext With(this IReadOnlyContext context, string key, object value)
+    public static TContext With<TContext>(this TContext context, string key, object value) where TContext : IReadOnlyContext
     {
-        return context.With(key, new ValueResolver(value));
+        return (TContext)context.With(key, new ValueResolver(value));
     }
 
-    public static IReadOnlyContext With<T>(this IReadOnlyContext context, Key<T> key, T value) where T : notnull
+    public static TContext With<TContext, T>(this TContext context, Key<T> key, T value)
+        where TContext : IReadOnlyContext
+        where T : notnull
     {
-        return context.With(key.Name, new ValueResolver<T>(value));
+        return (TContext)context.With(key.Name, new ValueResolver<T>(value));
     }
 
-    public static IReadOnlyContext With<T>(this IReadOnlyContext context, Key<T> key, Func<IReadOnlyContext, T> resolve) where T : notnull
+    public static TContext With<TContext, T>(this TContext context, Key<T> key, Func<TContext, T> resolve)
+        where TContext : IReadOnlyContext
+        where T : notnull
     {
-        return context.With(key.Name, new FactoryResolver<T>(resolve));
+        return (TContext)context.With(key.Name, new FactoryResolver<T>(ctx => resolve((TContext)ctx)));
     }
 
-    public static IReadOnlyContext With<T>(this IReadOnlyContext context, Key<T> key, Func<IReadOnlyContext, Task<T>> resolve) where T : notnull
+    public static TContext With<TContext, T>(this TContext context, Key<T> key, Func<TContext, Task<T>> resolve)
+        where TContext : IReadOnlyContext
+        where T : notnull
     {
-        return context.With(key.Name, new FactoryResolver<T>(resolve));
+        return (TContext)context.With(key.Name, new FactoryResolver<T>(ctx => resolve((TContext)ctx)));
     }
 }

@@ -18,6 +18,17 @@ public static class IServiceCollectionExtensions
             .AddScoped<IReadOnlyContext>(provider => provider.GetRequiredService<IContext>());
     }
 
+    public static IServiceCollection AddContext(this IServiceCollection services, Func<IContextBuilder, IContextBuilder> action)
+    {
+        return services
+            .AddScoped<IContext, Context>(provider =>
+            {
+                var builder = new ContextBuilder(provider);
+                return (Context)action(builder).Build();
+            })
+            .AddScoped<IReadOnlyContext>(provider => provider.GetRequiredService<IContext>());
+    }
+
     public static IServiceCollection AddContextAccessor(this IServiceCollection services)
     {
         return services

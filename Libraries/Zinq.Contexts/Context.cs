@@ -8,7 +8,7 @@ public partial class Context : IContext
     public IReadOnlyContext? Parent { get; internal set; }
     public IServiceProvider Provider { get; internal set; }
 
-    protected IDictionary<string, IResolver> Values { get; private set; } = new Dictionary<string, IResolver>();
+    internal IDictionary<string, IResolver> Values { get; init; } = new Dictionary<string, IResolver>();
 
     public Context(IServiceProvider provider)
     {
@@ -62,11 +62,15 @@ public partial class Context : IContext
 
     public IReadOnlyContext With(string key, IResolver resolver)
     {
-        return New(this).Set(key, resolver).Build();
+        return New(this).With(key, resolver).Build();
     }
 
     public IReadOnlyContext ToReadOnly()
     {
         return this;
     }
+
+    public static IContextBuilder New() => new ContextBuilder();
+    public static IContextBuilder New(IServiceProvider provider) => new ContextBuilder(provider);
+    public static IContextBuilder New(IReadOnlyContext parent) => new ContextBuilder(parent);
 }
