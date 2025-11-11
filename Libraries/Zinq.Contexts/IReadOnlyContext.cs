@@ -2,7 +2,6 @@ namespace Zinq.Contexts;
 
 public interface IReadOnlyContext : IDisposable, ICloneable
 {
-    string TraceId { get; }
     IReadOnlyContext? Parent { get; }
     IServiceProvider Provider { get; }
 

@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
+using Zinq.Contexts.Extensions.Tracing;
+
 namespace Zinq.Contexts.AspNetCore;
 
 public static partial class Extensions
@@ -30,6 +32,7 @@ public class HttpExtension : IContextExtension
         if (httpContext is not null)
         {
             context.Set(Keys.Http, httpContext);
+            context.Set(Keys.TraceId, httpContext.TraceIdentifier);
         }
     }
 }

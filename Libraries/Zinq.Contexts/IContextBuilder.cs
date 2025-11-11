@@ -5,7 +5,6 @@ namespace Zinq.Contexts;
 public interface IContextBuilder : IContextBuilder<IContext>;
 public interface IContextBuilder<TContext> where TContext : IContext
 {
-    IContextBuilder WithTraceId(string traceId);
     IContextBuilder WithParent(IReadOnlyContext parent);
     IContextBuilder WithExtension<TContextExtension>() where TContextExtension : class, IContextExtension;
     IContextBuilder With(string key, IResolver resolver);

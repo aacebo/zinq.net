@@ -4,7 +4,6 @@ namespace Zinq.Contexts;
 
 public class ContextBuilder : IContextBuilder
 {
-    private string? _traceId;
     private IReadOnlyContext? _parent;
     private readonly IServiceProvider _provider;
     private readonly IServiceCollection _extensions = new ServiceCollection();
@@ -23,19 +22,11 @@ public class ContextBuilder : IContextBuilder
     public ContextBuilder(IReadOnlyContext parent) : this(parent.Provider)
     {
         _parent = parent;
-        _traceId = parent.TraceId;
-    }
-
-    public IContextBuilder WithTraceId(string traceId)
-    {
-        _traceId = traceId;
-        return this;
     }
 
     public IContextBuilder WithParent(IReadOnlyContext parent)
     {
         _parent = parent;
-        _traceId = parent.TraceId;
         return this;
     }
 
@@ -57,11 +48,6 @@ public class ContextBuilder : IContextBuilder
         {
             Values = _values
         };
-
-        if (_traceId is not null)
-        {
-            context.TraceId = _traceId;
-        }
 
         if (_parent is not null)
         {

@@ -4,7 +4,6 @@ namespace Zinq.Contexts;
 
 public partial class Context : IContext
 {
-    public string TraceId { get; internal set; }
     public IReadOnlyContext? Parent { get; internal set; }
     public IServiceProvider Provider { get; internal set; }
 
@@ -12,7 +11,6 @@ public partial class Context : IContext
 
     public Context(IServiceProvider provider)
     {
-        TraceId = Guid.NewGuid().ToString();
         Provider = provider;
 
         foreach (var extension in provider.GetServices<IContextExtension>())
