@@ -10,7 +10,7 @@ public interface IContextBuilder<out TContext> where TContext : IContext
     TContext Build();
 }
 
-public static class IContextBuilderExtensions
+public static class ContextBuilderExtensions
 {
     public static TContextBuilder With<TContextBuilder, T>(this TContextBuilder builder, Key<T> key, T value)
         where TContextBuilder : IContextBuilder
