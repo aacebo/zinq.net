@@ -24,9 +24,26 @@ public partial class Context : IContext
         return Values.ContainsKey(key) || (Parent is not null && Parent.Has(key));
     }
 
+    public bool Has<T>(Key<T> key) where T : notnull
+    {
+        return Has(key.Name);
+    }
+
     public object? Get(string key)
     {
         return TryGet(key, out var value) ? value : throw new Exception($"'{key}' not found");
+    }
+
+    public T Get<T>(Key<T> key) where T : notnull
+    {
+        var value = Get(key.Name) ?? throw new Exception($"key '{key}' not found");
+
+        if (value is not T casted)
+        {
+            throw new Exception($"'{key}' => expected type '{typeof(T)}', found '{value.GetType()}'");
+        }
+
+        return casted;
     }
 
     public bool TryGet(string key, out object value)
@@ -46,6 +63,18 @@ public partial class Context : IContext
         return false;
     }
 
+    public bool TryGet<T>(Key<T> key, out T value) where T : notnull
+    {
+        if (TryGet(key.Name, out var o) && o is T output)
+        {
+            value = output;
+            return true;
+        }
+
+        value = default!;
+        return false;
+    }
+
     public IContext Set(string key, IResolver resolver)
     {
         Values.Add(key, resolver);
@@ -58,15 +87,9 @@ public partial class Context : IContext
         return this;
     }
 
-    public IReadOnlyContext With(string key, IResolver resolver)
-    {
-        return New(this).With(key, resolver).Build();
-    }
-
-    public IReadOnlyContext ToReadOnly()
-    {
-        return this;
-    }
+    public IContext Scope() => New(this).Build();
+    public IReadOnlyContext With(string key, IResolver resolver) => Parent is null ? New(Provider).With(key, resolver).Build() : New(Parent).With(key, resolver).Build();
+    public IReadOnlyContext ToReadOnly() => this;
 
     public static IContextBuilder New() => new ContextBuilder();
     public static IContextBuilder New(IServiceProvider provider) => new ContextBuilder(provider);

@@ -9,5 +9,6 @@ public interface IReadOnlyContext : IDisposable, ICloneable
     object? Get(string key);
     bool TryGet(string key, out object value);
 
+    IContext Scope();
     IReadOnlyContext With(string key, IResolver resolver);
 }

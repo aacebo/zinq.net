@@ -14,7 +14,8 @@ public static class IServiceCollectionExtensions
     public static IServiceCollection AddContext<TContext>(this IServiceCollection services) where TContext : class, IContext
     {
         return services
-            .AddScoped<IContext, TContext>()
+            .AddScoped<TContext>()
+            .AddScoped<IContext, TContext>(provider => provider.GetRequiredService<TContext>())
             .AddScoped<IReadOnlyContext>(provider => provider.GetRequiredService<IContext>());
     }
 
@@ -39,14 +40,17 @@ public static class IServiceCollectionExtensions
     public static IServiceCollection AddContextAccessor<TContextAccessor>(this IServiceCollection services)
         where TContextAccessor : class, IContextAccessor
     {
-        return services.AddSingleton<IContextAccessor, TContextAccessor>();
+        return services
+            .AddSingleton<TContextAccessor>()
+            .AddSingleton<IContextAccessor, TContextAccessor>(provider => provider.GetRequiredService<TContextAccessor>());
     }
 
     public static IServiceCollection AddMutableContextAccessor<TContextAccessor>(this IServiceCollection services)
         where TContextAccessor : class, IMutableContextAccessor
     {
         return services
-            .AddSingleton<IMutableContextAccessor, TContextAccessor>()
+            .AddSingleton<TContextAccessor>()
+            .AddSingleton<IMutableContextAccessor, TContextAccessor>(provider => provider.GetRequiredService<TContextAccessor>())
             .AddSingleton<IContextAccessor>(provider => provider.GetRequiredService<IMutableContextAccessor>());
     }
 }
