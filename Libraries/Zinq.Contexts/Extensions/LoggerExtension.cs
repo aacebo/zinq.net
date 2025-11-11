@@ -23,7 +23,7 @@ public static partial class Extensions
         public ILogger Logger
         {
             get => context.Get(Keys.Logger);
-            set => context.Set(Keys.Logger, value);
+            internal set => context.Set(Keys.Logger, value);
         }
     }
 
