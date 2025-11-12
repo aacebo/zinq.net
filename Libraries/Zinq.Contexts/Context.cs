@@ -77,5 +77,5 @@ public partial class Context : IContext
     public IReadOnlyContext With(string key, IResolver resolver) => Parent is null ? New().With(key, resolver).Build() : New().WithParent(Parent).With(key, resolver).Build();
     public IReadOnlyContext ToReadOnly() => this;
 
-    public static IContextBuilder New() => new ContextBuilder();
+    public static IContextBuilder<IContext> New() => new ContextBuilder();
 }

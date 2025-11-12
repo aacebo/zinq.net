@@ -1,6 +1,6 @@
 namespace Zinq.Contexts;
 
-public class ContextBuilder : IContextBuilder
+public class ContextBuilder : IContextBuilder<IContext>
 {
     private IReadOnlyContext? _parent;
     private readonly Dictionary<string, IResolver> _values = [];
@@ -10,13 +10,13 @@ public class ContextBuilder : IContextBuilder
 
     }
 
-    public IContextBuilder WithParent(IReadOnlyContext parent)
+    public IContextBuilder<IContext> WithParent(IReadOnlyContext parent)
     {
         _parent = parent;
         return this;
     }
 
-    public IContextBuilder With(string key, IResolver resolver)
+    public IContextBuilder<IContext> With(string key, IResolver resolver)
     {
         _values.Add(key, resolver);
         return this;
