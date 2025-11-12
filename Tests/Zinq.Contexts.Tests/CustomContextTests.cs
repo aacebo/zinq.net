@@ -1,9 +1,7 @@
-using Zinq.Contexts.Annotations;
 using Zinq.Contexts.Resolvers;
 
 namespace Zinq.Contexts.Tests;
 
-[Context]
 public class UserContext : Context, IContext
 {
     public Guid UserId
