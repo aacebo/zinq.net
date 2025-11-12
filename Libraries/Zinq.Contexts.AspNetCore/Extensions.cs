@@ -36,6 +36,13 @@ public static partial class Extensions
         }
     }
 
+    public static IAspNetCoreContext<TContext> WithAspNetCore<TContext>(this TContext context, IServiceProvider provider)
+        where TContext : IContext
+    {
+        var extension = new AspNetCoreExtension<TContext>(provider);
+        return extension.Extend(context);
+    }
+
     public static IContextBuilder<IAspNetCoreContext<TContext>> WithAspNetCore<TContext>(this IContextBuilder<TContext> builder, IServiceProvider provider)
         where TContext : IContext
     {

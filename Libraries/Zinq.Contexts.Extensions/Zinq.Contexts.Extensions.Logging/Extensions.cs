@@ -14,6 +14,13 @@ public static partial class Extensions
         public ILogger Logger => context.Get(Keys.Logger);
     }
 
+    public static ILoggerContext<TContext> WithLogger<TContext>(this TContext context, IServiceProvider provider)
+        where TContext : IContext
+    {
+        var extension = new LoggerExtension<TContext>(provider);
+        return extension.Extend(context);
+    }
+
     public static IContextBuilder<ILoggerContext<TContext>> WithLogger<TContext>(this IContextBuilder<TContext> builder, IServiceProvider provider)
         where TContext : IContext
     {
