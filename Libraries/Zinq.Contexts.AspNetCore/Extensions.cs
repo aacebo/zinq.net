@@ -1,4 +1,8 @@
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+
+using Zinq.Contexts.Extensions.DependencyInjection;
+using Zinq.Contexts.Extensions.Logging;
 
 namespace Zinq.Contexts.AspNetCore;
 
@@ -16,6 +20,8 @@ public static partial class Extensions
 
     extension<TContext>(IReadOnly<IAspNetCoreContext<TContext>> context) where TContext : IContext
     {
+        public ILogger Logger => context.Get(Keys.Logger);
+        public IServiceProvider Provider => context.Get(Keys.Provider);
         public HttpContext? Http
         {
             get

@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zinq.Contexts.Extensions.Lo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zinq.Contexts.Extensions.DependencyInjection.Tests", "Tests\Zinq.Contexts.Extensions\Zinq.Contexts.Extensions.DependencyInjection.Tests\Zinq.Contexts.Extensions.DependencyInjection.Tests.csproj", "{89DE7BD0-48BC-4C02-B37A-0B8DE19499CF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zinq.Contexts.AspNetCore.Tests", "Tests\Zinq.Contexts.AspNetCore.Tests\Zinq.Contexts.AspNetCore.Tests.csproj", "{5E4909CA-D68A-4B48-BFAF-BCED15BBDB73}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -119,6 +121,18 @@ Global
 		{89DE7BD0-48BC-4C02-B37A-0B8DE19499CF}.Release|x64.Build.0 = Release|Any CPU
 		{89DE7BD0-48BC-4C02-B37A-0B8DE19499CF}.Release|x86.ActiveCfg = Release|Any CPU
 		{89DE7BD0-48BC-4C02-B37A-0B8DE19499CF}.Release|x86.Build.0 = Release|Any CPU
+		{5E4909CA-D68A-4B48-BFAF-BCED15BBDB73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E4909CA-D68A-4B48-BFAF-BCED15BBDB73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E4909CA-D68A-4B48-BFAF-BCED15BBDB73}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5E4909CA-D68A-4B48-BFAF-BCED15BBDB73}.Debug|x64.Build.0 = Debug|Any CPU
+		{5E4909CA-D68A-4B48-BFAF-BCED15BBDB73}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5E4909CA-D68A-4B48-BFAF-BCED15BBDB73}.Debug|x86.Build.0 = Debug|Any CPU
+		{5E4909CA-D68A-4B48-BFAF-BCED15BBDB73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E4909CA-D68A-4B48-BFAF-BCED15BBDB73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E4909CA-D68A-4B48-BFAF-BCED15BBDB73}.Release|x64.ActiveCfg = Release|Any CPU
+		{5E4909CA-D68A-4B48-BFAF-BCED15BBDB73}.Release|x64.Build.0 = Release|Any CPU
+		{5E4909CA-D68A-4B48-BFAF-BCED15BBDB73}.Release|x86.ActiveCfg = Release|Any CPU
+		{5E4909CA-D68A-4B48-BFAF-BCED15BBDB73}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -133,5 +147,6 @@ Global
 		{33254E7B-41FC-DC01-BC3D-C42862BE73C5} = {0AB3BF05-4346-4AA6-1389-037BE0695223}
 		{95F019AE-221B-4825-8C0A-DC9999E51AD0} = {33254E7B-41FC-DC01-BC3D-C42862BE73C5}
 		{89DE7BD0-48BC-4C02-B37A-0B8DE19499CF} = {33254E7B-41FC-DC01-BC3D-C42862BE73C5}
+		{5E4909CA-D68A-4B48-BFAF-BCED15BBDB73} = {0AB3BF05-4346-4AA6-1389-037BE0695223}
 	EndGlobalSection
 EndGlobal
