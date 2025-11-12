@@ -10,7 +10,10 @@ public class ServiceProviderTests
     public void Should_HaveProvider()
     {
         var provider = new ServiceCollection().BuildServiceProvider();
-        var context = new ContextBuilder().WithProvider(provider).Build();
+        var context = new ContextBuilder()
+            .WithProvider(provider)
+            .Build()
+            .ToReadOnly();
 
         Assert.True(context.Has(Keys.Provider));
         Assert.IsAssignableFrom<IServiceProvider>(context.Provider);

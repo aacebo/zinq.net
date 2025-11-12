@@ -77,6 +77,5 @@ public partial class Context : IContext
         Values.Add(key, resolver);
     }
 
-    public IReadOnlyContext ToReadOnly() => this;
     public static IContextBuilder<IContext> New() => new ContextBuilder();
 }

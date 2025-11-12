@@ -33,7 +33,7 @@ public static class ContextBuilderExtensions
 
     public static IContextBuilder<TNext> WithExtension<TContext, TNext>(this IContextBuilder<TContext> builder, IContextExtension<TContext, TNext> extension)
         where TContext : IContext
-        where TNext : IExtendedContext<TContext>
+        where TNext : IContext<TContext>
     {
         return extension.Extend(builder);
     }
