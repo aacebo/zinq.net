@@ -12,6 +12,8 @@
 
   <ItemGroup>
     <ProjectReference Include="../Zinq.Contexts/Zinq.Contexts.csproj" />
+    <ProjectReference Include="../Zinq.Contexts.Extensions/Zinq.Contexts.Extensions.DependencyInjection/Zinq.Contexts.Extensions.DependencyInjection.csproj" />
+    <ProjectReference Include="../Zinq.Contexts.Extensions/Zinq.Contexts.Extensions.Logging/Zinq.Contexts.Extensions.Logging.csproj" />
   </ItemGroup>
 
 </Project>

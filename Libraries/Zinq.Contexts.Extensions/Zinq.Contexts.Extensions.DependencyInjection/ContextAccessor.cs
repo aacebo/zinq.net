@@ -1,6 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Zinq.Contexts.AspNetCore;
+namespace Zinq.Contexts.Extensions.DependencyInjection;
 
 public class ContextAccessor(IServiceProvider provider) : IMutableContextAccessor
 {

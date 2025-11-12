@@ -1,4 +1,4 @@
-namespace Zinq.Contexts;
+namespace Zinq.Contexts.Extensions.DependencyInjection;
 
 public interface IContextAccessor
 {
