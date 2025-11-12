@@ -4,7 +4,7 @@ public static partial class Extensions
 {
     extension(Keys)
     {
-        public static Key<IServiceProvider> Provider => new("provider");
+        public static Key<IServiceProvider> Provider => new("microsoft.extensions.provider");
     }
 
     extension<TContext>(IReadOnly<IProviderContext<TContext>> context) where TContext : IContext

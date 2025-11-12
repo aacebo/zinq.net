@@ -6,7 +6,7 @@ public static partial class Extensions
 {
     extension(Keys)
     {
-        public static Key<ILogger> Logger => new("logger");
+        public static Key<ILogger> Logger => new("microsoft.extensions.logger");
     }
 
     extension<TContext>(IReadOnly<ILoggerContext<TContext>> context) where TContext : IContext
