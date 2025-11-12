@@ -34,6 +34,6 @@ public static class ContextBuilderExtensions
 
     public static IContextBuilder<IContext<TContext>> WithExtension<TContext>(this TContext context) where TContext : IContext
     {
-        return 
+        return
     }
 }
