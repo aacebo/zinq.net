@@ -4,7 +4,6 @@ namespace Zinq.Contexts;
 
 public interface IContextBuilder<out TContext> where TContext : IContext
 {
-    IContextBuilder<TContext> WithParent(IReadOnlyContext parent);
     IContextBuilder<TContext> With(string key, IResolver resolver);
     TContext Build();
 }
@@ -32,10 +31,9 @@ public static class ContextBuilderExtensions
         return builder.With(key.Name, new FactoryResolver<T>(resolve));
     }
 
-    public static IContextBuilder<TNext> WithExtension<TContext, TExtension, TNext>(this IContextBuilder<TContext> builder, TExtension extension)
+    public static IContextBuilder<TNext> WithExtension<TContext, TNext>(this IContextBuilder<TContext> builder, IContextExtension<TContext, TNext> extension)
         where TContext : IContext
-        where TNext : IContext<TContext>
-        where TExtension : IContextExtension<TContext, TNext>
+        where TNext : IExtendedContext<TContext>
     {
         return extension.Extend(builder);
     }

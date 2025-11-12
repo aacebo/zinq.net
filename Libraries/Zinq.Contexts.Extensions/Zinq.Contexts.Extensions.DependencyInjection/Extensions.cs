@@ -7,11 +7,6 @@ public static partial class Extensions
         public static Key<IServiceProvider> Provider => new("provider");
     }
 
-    extension(IReadOnlyContext context)
-    {
-        public IServiceProvider Provider => context.Get(Keys.Provider);
-    }
-
     public static IContextBuilder<IProviderContext<TContext>> WithProvider<TContext>(this IContextBuilder<TContext> builder, IServiceProvider provider)
         where TContext : IContext
     {

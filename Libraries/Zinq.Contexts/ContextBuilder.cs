@@ -2,18 +2,11 @@ namespace Zinq.Contexts;
 
 public class ContextBuilder : IContextBuilder<IContext>
 {
-    private IReadOnlyContext? _parent;
     private readonly Dictionary<string, IResolver> _values = [];
 
     public ContextBuilder()
     {
 
-    }
-
-    public IContextBuilder<IContext> WithParent(IReadOnlyContext parent)
-    {
-        _parent = parent;
-        return this;
     }
 
     public IContextBuilder<IContext> With(string key, IResolver resolver)
@@ -28,11 +21,6 @@ public class ContextBuilder : IContextBuilder<IContext>
         {
             Values = _values
         };
-
-        if (_parent is not null)
-        {
-            context.Parent = _parent;
-        }
 
         return context;
     }

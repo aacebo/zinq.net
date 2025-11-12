@@ -9,6 +9,6 @@ public class LoggerExtension<TContext>(IServiceProvider provider) : IContextExte
     public IContextBuilder<ILoggerContext<TContext>> Extend(IContextBuilder<TContext> builder)
     {
         var logger = provider.GetRequiredService<ILoggerFactory>().CreateLogger<TContext>();
-        return (IContextBuilder<ILoggerContext<TContext>>)builder.With(Keys.Logger, logger);
+        return new LoggerContextBuilder<TContext>(builder.With(Keys.Logger, logger));
     }
 }

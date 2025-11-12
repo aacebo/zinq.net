@@ -9,16 +9,6 @@ public static partial class Extensions
         public static Key<ILogger> Logger => new("logger");
     }
 
-    extension(IReadOnlyContext context)
-    {
-        public ILogger Logger => context.Get(Keys.Logger);
-    }
-
-    extension<TContext>(ILoggerContext<TContext> context) where TContext : IContext
-    {
-        public ILogger Logger => context.Get(Keys.Logger);
-    }
-
     public static IContextBuilder<ILoggerContext<TContext>> WithLogger<TContext>(this IContextBuilder<TContext> builder, IServiceProvider provider)
         where TContext : IContext
     {

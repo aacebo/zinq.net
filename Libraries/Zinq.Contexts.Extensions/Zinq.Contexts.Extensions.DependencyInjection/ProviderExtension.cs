@@ -5,6 +5,6 @@ public class ProviderExtension<TContext>(IServiceProvider provider) : IContextEx
 {
     public IContextBuilder<IProviderContext<TContext>> Extend(IContextBuilder<TContext> builder)
     {
-        return (IContextBuilder<IProviderContext<TContext>>)builder.With(Keys.Provider, provider);
+        return new ProviderContextBuilder<TContext>(builder.With(Keys.Provider, provider));
     }
 }

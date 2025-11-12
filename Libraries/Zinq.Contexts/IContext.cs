@@ -2,8 +2,5 @@ namespace Zinq.Contexts;
 
 public interface IContext : IReadOnlyContext
 {
-    IContext Set(string key, IResolver resolver);
-    IReadOnlyContext ToReadOnly();
+    void Set(string key, IResolver resolver);
 }
-
-public interface IContext<TParent> : IContext, IReadOnlyContext<TParent> where TParent : IContext;
