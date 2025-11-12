@@ -12,8 +12,10 @@ public static partial class Extensions
         public IServiceProvider Provider => context.Get(Keys.Provider);
     }
 
-    public static TContextBuilder WithProvider<TContextBuilder>(this TContextBuilder builder, IServiceProvider provider) where TContextBuilder : IContextBuilder
+    public static IContextBuilder<IProviderContext<TContext>> WithProvider<TContext>(this IContextBuilder<TContext> builder, IServiceProvider provider)
+        where TContext : IContext
     {
-        return builder.With(Keys.Provider, provider);
+        var extension = new ProviderExtension<TContext>(provider);
+        return extension.Extend(builder);
     }
 }

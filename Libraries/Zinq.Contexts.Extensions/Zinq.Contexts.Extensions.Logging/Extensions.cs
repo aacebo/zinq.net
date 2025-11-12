@@ -1,4 +1,3 @@
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 namespace Zinq.Contexts.Extensions.Logging;
@@ -15,19 +14,15 @@ public static partial class Extensions
         public ILogger Logger => context.Get(Keys.Logger);
     }
 
-    extension<TContext>(IExtension<ILoggerContext<TContext>> context) where TContext : IContext
+    extension<TContext>(ILoggerContext<TContext> context) where TContext : IContext
     {
         public ILogger Logger => context.Get(Keys.Logger);
     }
 
-    public static IContextBuilder<IExtendedContext<ILoggerContext<TContext>>> WithLogger<TContext>(this IContextBuilder<TContext> builder, ILogger logger) where TContext : IContext
+    public static IContextBuilder<ILoggerContext<TContext>> WithLogger<TContext>(this IContextBuilder<TContext> builder, IServiceProvider provider)
+        where TContext : IContext
     {
-        return builder.With(Keys.Logger, logger);
-    }
-
-    public static TContextBuilder WithLogger<TContextBuilder>(this TContextBuilder builder, IServiceProvider provider) where TContextBuilder : IContextBuilder
-    {
-        var logger = provider.GetRequiredService<ILoggerFactory>().CreateLogger<IContext>();
-        return builder.With(Keys.Logger, logger);
+        var extension = new LoggerExtension<TContext>(provider);
+        return extension.Extend(builder);
     }
 }

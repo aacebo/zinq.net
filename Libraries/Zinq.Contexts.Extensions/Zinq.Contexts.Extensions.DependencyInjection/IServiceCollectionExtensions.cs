@@ -7,7 +7,7 @@ public static class IServiceCollectionExtensions
     public static IServiceCollection AddContext(this IServiceCollection services)
     {
         return services
-            .AddScoped(provider => Context.New().WithProvider(provider).Build())
+            .AddScoped(provider => new ContextBuilder().WithProvider(provider).Build())
             .AddScoped<IReadOnlyContext>(provider => provider.GetRequiredService<IContext>());
     }
 
@@ -19,7 +19,7 @@ public static class IServiceCollectionExtensions
             .AddScoped<IReadOnlyContext>(provider => provider.GetRequiredService<IContext>());
     }
 
-    public static IServiceCollection AddContext(this IServiceCollection services, Func<IServiceProvider, IContextBuilder, IContextBuilder> action)
+    public static IServiceCollection AddContext(this IServiceCollection services, Func<IServiceProvider, IContextBuilder<IContext>, IContextBuilder<IContext>> action)
     {
         return services
             .AddScoped<IContext, Context>(provider =>

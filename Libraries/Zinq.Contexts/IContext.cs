@@ -6,4 +6,4 @@ public interface IContext : IReadOnlyContext
     IReadOnlyContext ToReadOnly();
 }
 
-public interface IContext<TInnerContext> : IContext where TInnerContext : IContext;
+public interface IContext<TParent> : IContext, IReadOnlyContext<TParent> where TParent : IContext;
