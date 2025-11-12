@@ -11,7 +11,7 @@ public static partial class Extensions
 
     extension<TContext>(IReadOnly<ILoggerContext<TContext>> context) where TContext : IContext
     {
-        public ILogger Logger => context.Get(Keys.Logger);
+        public ILogger Logger => context.Parent.Logger;
     }
 
     public static ILoggerContext<TContext> WithLogger<TContext>(this TContext context, IServiceProvider provider)

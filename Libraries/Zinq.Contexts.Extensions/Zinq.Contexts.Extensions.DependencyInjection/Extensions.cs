@@ -9,7 +9,7 @@ public static partial class Extensions
 
     extension<TContext>(IReadOnly<IProviderContext<TContext>> context) where TContext : IContext
     {
-        public IServiceProvider Provider => context.Get(Keys.Provider);
+        public IServiceProvider Provider => context.Parent.Provider;
     }
 
     public static IProviderContext<TContext> WithProvider<TContext>(this TContext context, IServiceProvider provider)
