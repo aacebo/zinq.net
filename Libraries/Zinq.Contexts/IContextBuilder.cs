@@ -30,11 +30,4 @@ public static class ContextBuilderExtensions
     {
         return builder.With(key.Name, new FactoryResolver<T>(resolve));
     }
-
-    public static IContextBuilder<TNext> WithExtension<TContext, TNext>(this IContextBuilder<TContext> builder, IContextExtension<TContext, TNext> extension)
-        where TContext : IContext
-        where TNext : IContext<TContext>
-    {
-        return extension.Extend(builder);
-    }
 }
