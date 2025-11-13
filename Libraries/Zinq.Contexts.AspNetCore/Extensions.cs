@@ -3,16 +3,16 @@ using Microsoft.Extensions.Logging;
 
 namespace Zinq.Contexts.AspNetCore;
 
-public class AspNetCoreKeys
+public class AspNetCoreKey
 {
     public readonly Key<HttpContext> Http = new("aspnetcore.http");
 }
 
 public static partial class Extensions
 {
-    extension(Keys)
+    extension(Key)
     {
-        public static AspNetCoreKeys AspNetCore => new();
+        public static AspNetCoreKey AspNetCore => new();
     }
 
     extension<TContext>(IReadOnly<IAspNetCoreContext<TContext>> context) where TContext : IContext
@@ -23,7 +23,7 @@ public static partial class Extensions
         {
             get
             {
-                if (context.TryGet(Keys.AspNetCore.Http, out var output))
+                if (context.TryGet(Key.AspNetCore.Http, out var output))
                 {
                     return output;
                 }

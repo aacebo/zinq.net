@@ -2,7 +2,7 @@ namespace Zinq.Contexts.Extensions.DependencyInjection;
 
 public static partial class Extensions
 {
-    extension(Keys)
+    extension(Key)
     {
         public static Key<IServiceProvider> Provider => new("microsoft.extensions.provider");
     }

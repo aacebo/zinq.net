@@ -4,7 +4,7 @@ namespace Zinq.Contexts.Extensions.Logging;
 
 public static partial class Extensions
 {
-    extension(Keys)
+    extension(Key)
     {
         public static Key<ILogger> Logger => new("microsoft.extensions.logger");
     }

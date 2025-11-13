@@ -15,7 +15,7 @@ public class ServiceProviderTests
             .Build()
             .ToReadOnly();
 
-        Assert.True(context.Has(Keys.Provider));
+        Assert.True(context.Has(Key.Provider));
         Assert.IsAssignableFrom<IServiceProvider>(context.Provider);
     }
 }

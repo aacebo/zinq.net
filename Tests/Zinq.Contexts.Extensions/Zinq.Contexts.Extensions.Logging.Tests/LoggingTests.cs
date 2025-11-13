@@ -20,7 +20,7 @@ public class LoggingTests
             .Build()
             .ToReadOnly();
 
-        Assert.True(context.Has(Keys.Logger));
+        Assert.True(context.Has(Key.Logger));
         Assert.IsAssignableFrom<ILogger>(context.Logger);
     }
 }

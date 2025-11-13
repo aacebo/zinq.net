@@ -17,13 +17,13 @@ public class AspNetCoreExtension<TContext>(IServiceProvider provider) : IContext
 
         if (accessor.HttpContext is not null)
         {
-            context.Set(Keys.AspNetCore.Http, accessor.HttpContext);
+            context.Set(Key.AspNetCore.Http, accessor.HttpContext);
         }
 
         return new AspNetCoreContext<TContext>(
             context
-                .With(Keys.Provider, provider)
-                .With(Keys.Logger, logger)
+                .With(Key.Provider, provider)
+                .With(Key.Logger, logger)
         );
     }
 
@@ -34,13 +34,13 @@ public class AspNetCoreExtension<TContext>(IServiceProvider provider) : IContext
 
         if (accessor.HttpContext is not null)
         {
-            builder = builder.With(Keys.AspNetCore.Http, accessor.HttpContext);
+            builder = builder.With(Key.AspNetCore.Http, accessor.HttpContext);
         }
 
         return new AspNetCoreContextBuilder<TContext>(
             builder
-                .With(Keys.Provider, provider)
-                .With(Keys.Logger, logger)
+                .With(Key.Provider, provider)
+                .With(Key.Logger, logger)
         );
     }
 }
