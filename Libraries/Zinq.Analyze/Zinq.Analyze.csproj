@@ -13,9 +13,4 @@
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.4.0" PrivateAssets="all" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="../Zinq.Contexts/Zinq.Contexts.csproj" />
-    <ProjectReference Include="../Zinq.Analyze/Zinq.Analyze.csproj" />
-  </ItemGroup>
-
 </Project>
