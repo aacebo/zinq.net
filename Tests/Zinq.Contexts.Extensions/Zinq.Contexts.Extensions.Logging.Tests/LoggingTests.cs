@@ -16,9 +16,10 @@ public class LoggingTests
             .BuildServiceProvider();
 
         var context = new ContextBuilder()
-            .WithLogger(provider)
+            .WithProvider(provider)
+            // .WithLogger(provider)
             .Build()
-            .ToReadOnly();
+            .withLog
 
         Assert.True(context.Has(Key.Logger));
         Assert.IsAssignableFrom<ILogger>(context.Logger);

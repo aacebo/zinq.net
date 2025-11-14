@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Libraries\Zinq.Contexts\Zinq.Contexts.csproj" />
+    <ProjectReference Include="..\..\..\Libraries\Zinq.Contexts.Generators\Zinq.Contexts.Generators.csproj" PrivateAssets="all" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
     <ProjectReference Include="..\..\..\Libraries\Zinq.Contexts.Extensions\Zinq.Contexts.Extensions.DependencyInjection\Zinq.Contexts.Extensions.DependencyInjection.csproj" />
     <ProjectReference Include="..\..\..\Libraries\Zinq.Contexts.Extensions\Zinq.Contexts.Extensions.Logging\Zinq.Contexts.Extensions.Logging.csproj" />
   </ItemGroup>

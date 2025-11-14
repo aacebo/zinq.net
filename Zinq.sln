@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zinq.Contexts.Extensions.De
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zinq.Contexts.AspNetCore.Tests", "Tests\Zinq.Contexts.AspNetCore.Tests\Zinq.Contexts.AspNetCore.Tests.csproj", "{5E4909CA-D68A-4B48-BFAF-BCED15BBDB73}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zinq.Contexts.Generators", "Libraries\Zinq.Contexts.Generators\Zinq.Contexts.Generators.csproj", "{9A935FC5-1D94-4754-8CD4-5099C4D0EE9C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -133,6 +135,18 @@ Global
 		{5E4909CA-D68A-4B48-BFAF-BCED15BBDB73}.Release|x64.Build.0 = Release|Any CPU
 		{5E4909CA-D68A-4B48-BFAF-BCED15BBDB73}.Release|x86.ActiveCfg = Release|Any CPU
 		{5E4909CA-D68A-4B48-BFAF-BCED15BBDB73}.Release|x86.Build.0 = Release|Any CPU
+		{9A935FC5-1D94-4754-8CD4-5099C4D0EE9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A935FC5-1D94-4754-8CD4-5099C4D0EE9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A935FC5-1D94-4754-8CD4-5099C4D0EE9C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9A935FC5-1D94-4754-8CD4-5099C4D0EE9C}.Debug|x64.Build.0 = Debug|Any CPU
+		{9A935FC5-1D94-4754-8CD4-5099C4D0EE9C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9A935FC5-1D94-4754-8CD4-5099C4D0EE9C}.Debug|x86.Build.0 = Debug|Any CPU
+		{9A935FC5-1D94-4754-8CD4-5099C4D0EE9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A935FC5-1D94-4754-8CD4-5099C4D0EE9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A935FC5-1D94-4754-8CD4-5099C4D0EE9C}.Release|x64.ActiveCfg = Release|Any CPU
+		{9A935FC5-1D94-4754-8CD4-5099C4D0EE9C}.Release|x64.Build.0 = Release|Any CPU
+		{9A935FC5-1D94-4754-8CD4-5099C4D0EE9C}.Release|x86.ActiveCfg = Release|Any CPU
+		{9A935FC5-1D94-4754-8CD4-5099C4D0EE9C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -148,5 +162,6 @@ Global
 		{95F019AE-221B-4825-8C0A-DC9999E51AD0} = {33254E7B-41FC-DC01-BC3D-C42862BE73C5}
 		{89DE7BD0-48BC-4C02-B37A-0B8DE19499CF} = {33254E7B-41FC-DC01-BC3D-C42862BE73C5}
 		{5E4909CA-D68A-4B48-BFAF-BCED15BBDB73} = {0AB3BF05-4346-4AA6-1389-037BE0695223}
+		{9A935FC5-1D94-4754-8CD4-5099C4D0EE9C} = {F2E35B3E-9711-EDEC-6202-DB40BDEED14A}
 	EndGlobalSection
 EndGlobal

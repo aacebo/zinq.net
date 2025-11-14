@@ -2,12 +2,10 @@ namespace Zinq.Contexts;
 
 public interface IContext<TBaseContext> : IContext where TBaseContext : IReadOnlyContext
 {
-    TBaseContext Parent { get; }
 }
 
 public interface IReadOnly<TBaseContext> : IReadOnlyContext where TBaseContext : IContext
 {
-    TBaseContext Parent { get; }
 }
 
 public class Context<TBaseContext>(TBaseContext context) : Context(context), IContext<TBaseContext> where TBaseContext : IReadOnlyContext

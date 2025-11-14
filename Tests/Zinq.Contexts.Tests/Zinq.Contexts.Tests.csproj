@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Libraries\Zinq.Contexts\Zinq.Contexts.csproj" />
+    <ProjectReference Include="..\..\Libraries\Zinq.Contexts.Generators\Zinq.Contexts.Generators.csproj" PrivateAssets="all" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
   </ItemGroup>
 
 </Project>
